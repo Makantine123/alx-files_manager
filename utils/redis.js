@@ -1,12 +1,7 @@
-/**
- * Contains redis client class and some helper functions
- */
-import {
-  createClient,
-} from 'redis';
-import {
-  promisify,
-} from 'util';
+// Contains redis client class and some helper functions
+
+import { createClient } from 'redis';
+import { promisify } from 'util';
 
 class RedisClient {
   constructor() {
@@ -17,7 +12,7 @@ class RedisClient {
   }
 
   isAlive() {
-    return this.client.isReady;
+    return this.client.isOpen;
   }
 
   async get(key) {
