@@ -10,7 +10,7 @@ class DBClient {
   constructor() {
     this.client = new MongoClient(url, { useUnifiedTopology: true });
     this.client.connect();
-    this.db = this.client.db(this.dbdatabase);
+    this.db = this.client.db(dbdatabase);
   }
 
   isAlive() {
