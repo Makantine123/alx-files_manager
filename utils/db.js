@@ -19,7 +19,7 @@ class DBClient {
 
   isAlive() {
     try {
-      this.client.db().admin().ping();
+      this.client.isConnected();
       return true;
     } catch (error) {
       return false;
