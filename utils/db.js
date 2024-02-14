@@ -4,7 +4,7 @@ import { MongoClient } from 'mongodb';
 const dbhost = process.env.DB_HOST || 'localhost';
 const dbport = process.env.DB_PORT || 27017;
 const dbdatabase = process.env.DB_DATABASE || 'files_manager';
-const url = `mongodb://${dbhost}:${dbport}`;
+const url = `mongodb://${dbhost}:${dbport}/${dbdatabase}`;
 
 class DBClient {
   constructor() {
@@ -22,13 +22,13 @@ class DBClient {
   }
 
   async nbUsers() {
-    const usersCollection = this.db.collection('users');
+    const usersCollection = this.client.collection('users');
     const count = await usersCollection.countDocument();
     return count;
   }
 
   async nbFiles() {
-    const filesCollection = this.db.collection('files');
+    const filesCollection = this.client.collection('files');
     const count = await filesCollection.countDocument();
     return count;
   }
