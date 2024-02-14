@@ -13,7 +13,7 @@ class DBClient {
     this.dbport = DB_PORT;
     this.dbdatabase = DB_DATABASE;
 
-    this.client = new MongoClient(`mongodb://${this.dbhost}:${this.dbport}`);
+    this.client = new MongoClient(`mongodb://${this.dbhost}:${this.dbport}`, { userUuseUnifiedTopology: true });
     this.client.connect();
     this.db = this.client.db(this.dbdatabase);
   }
