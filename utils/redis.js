@@ -1,5 +1,5 @@
 // utils/redis.js
-import { redis } from 'redis';
+import redis from 'redis';
 
 class RedisClient {
   constructor() {
