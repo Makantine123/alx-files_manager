@@ -7,7 +7,8 @@ class RedisClient {
 
     this.client.on('error', (error) => {
       console.error('Redis error:', error);
-    });
+    })
+      .connect();
   }
 
   isAlive() {
