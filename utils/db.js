@@ -1,5 +1,5 @@
 // Class DBClient
-import MongoClient from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 class DBClient {
   constructor() {
@@ -13,9 +13,7 @@ class DBClient {
     this.dbport = DB_PORT;
     this.dbdatabase = DB_DATABASE;
 
-    const url = `mongodb://${this.dbhost}:${this.dbport}`;
-
-    this.client = new MongoClient(url);
+    this.client = new MongoClient(`mongodb://${this.dbhost}:${this.dbport}`);
     this.client.connect();
     this.db = this.client.db(this.dbdatabase);
   }
