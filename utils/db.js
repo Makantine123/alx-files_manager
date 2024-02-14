@@ -1,19 +1,14 @@
 // Class DBClient
 import { MongoClient } from 'mongodb';
 
+const dbhost = process.env.DB_HOST || 'localhost';
+const dbport = process.env.DB_PORT || 27017;
+const dbdatabase = process.env.DB_DATABASE || 'files_manager';
+const url = `mongodb://${dbhost}:${dbport}`;
+
 class DBClient {
   constructor() {
-    const {
-      DB_HOST = 'localhost',
-      DB_PORT = 27017,
-      DB_DATABASE = 'files_manager',
-    } = process.env;
-
-    this.dbhost = DB_HOST;
-    this.dbport = DB_PORT;
-    this.dbdatabase = DB_DATABASE;
-
-    this.client = new MongoClient(`mongodb://${this.dbhost}:${this.dbport}/${this.dbdatabase}`, { useUnifiedTopology: true });
+    this.client = new MongoClient(url, { useUnifiedTopology: true });
     this.client.connect();
   }
 
