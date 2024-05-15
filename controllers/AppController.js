@@ -1,17 +1,17 @@
 // controllers
 
-import redisClient from '../utils/redis';
-import dbClient from '../utils/db';
+const redisClient = require('../utils/redis');
+const dbClient = require('../utils/db');
 
 const AppController = {
-  getStatus: (res) => {
+  getStatus: (req, res) => {
     res.status(200).json({
       redis: redisClient.isAlive(),
       db: dbClient.isAlive(),
     });
   },
 
-  getStats: (res) => {
+  getStats: (req, res) => {
     res.status(200).json({
       users: dbClient.nbUsers(),
       files: dbClient.nbFiles(),
@@ -19,4 +19,4 @@ const AppController = {
   },
 };
 
-export default AppController;
+module.exports = AppController;
