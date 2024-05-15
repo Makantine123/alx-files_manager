@@ -4,14 +4,15 @@ const redis = require('redis');
 class RedisClient {
   constructor() {
     this.client = redis.createClient();
-
+    this.isClientConnected = true;
     this.client.on('error', (error) => {
       console.error('Redis error:', error);
+      this.isClientConnected = false;
     });
   }
 
   isAlive() {
-    return this.client.connected;
+    return this.isClientConnected;
   }
 
   async get(key) {
